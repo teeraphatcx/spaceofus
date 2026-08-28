@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>หัวข้อนำเสนอผลงาน | ITD 2026 สาขาวิชาเทคโนโลยีสารสนเทศและนวัตกรรมดิจิทัล มรภ.นครศรีธรรมราช</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="shortcut icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <meta name="description"
+    content="หัวข้อนำเสนอผลงานวิจัย การสัมนาทางด้านเทคโนโลยีสารสนเทศ ครั้งที่ 2 ประจำปี 2569 มหาวิทยาลัยราชภัฏนครศรีธรรมราช" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Kanit:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles-shared.css" />
+</head>
+
+<body>
+  <canvas id="trailCanvas"></canvas>
+  <div class="board-grid"></div>
+  <div class="probe" id="probe"></div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgress"></div>
+
+  <!-- Header Navigation -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-logo">
+          <img src="logo.png" alt="ITD 2026 Logo" onerror="this.parentElement.textContent='IT'" />
+        </span>
+        <span class="brand-text">การสัมนาทางด้านเทคโนโลยีสารสนเทศ</span>
+      </a>
+
+      <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="mainNav">
+        <a href="index.html#about">เกี่ยวกับ</a>
+        <a href="index.html#schedule">กำหนดการ</a>
+        <a href="sections.html" class="active">หัวข้อนำเสนอผลงาน</a>
+        <a href="download.html">ดาวน์โหลด</a>
+        <a href="contact.html">ติดต่อเรา</a>
+        <a class="nav-cta" href="register.html">
+          <span class="status-dot active"></span> ลงทะเบียนเข้าร่วม
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section Tracks -->
+    <section id="sections" class="section sections-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Presentation Tracks</span>
+          <h2>หัวข้อนำเสนอผลงาน</h2>
+          <p class="section-intro">ครอบคลุมวิทยาการและเทคโนโลยี ได้แก่:</p>
+        </div>
+
+        <div class="grid-3 sections-grid">
+          <article class="session-card reveal tilt-card">
+            <div class="session-img-wrapper">
+              <img src="https://scitech.rmutsv.ac.th/nscic2024/assets/session/01.jpg"
+                alt="Track 01: ระบบสารสนเทศอัจฉริยะ" loading="lazy" />
+              <div class="track-tag">Track 01</div>
+            </div>
+            <div class="session-content">
+              <h3>ระบบสารสนเทศอัจฉริยะ</h3>
+              <p>ระบบเพื่อการขานนามบัณฑิตด้วยเทคโนโลยีบาร์โค้ด</p>
+            </div>
+          </article>
+
+          <article class="session-card reveal tilt-card">
+            <div class="session-img-wrapper">
+              <img src="https://scitech.rmutsv.ac.th/nscic2024/assets/session/02.jpg"
+                alt="Track 02: ระบบสารสนเทศการอำนวยการ" loading="lazy" />
+              <div class="track-tag">Track 02</div>
+            </div>
+            <div class="session-content">
+              <h3>ระบบอำนวยการพิธี</h3>
+              <p>ระบบสนับสนุนพิธีพระราชทานปริญญาบัตรสำหรับมหาวิทยาลัยราชภัฏ</p>
+            </div>
+          </article>
+
+          <article class="session-card reveal tilt-card">
+            <div class="session-img-wrapper">
+              <img src="https://scitech.rmutsv.ac.th/nscic2024/assets/session/03.jpg" alt="Track 03: ระบบบริหารคลังยา"
+                loading="lazy" />
+              <div class="track-tag">Track 03</div>
+            </div>
+            <div class="session-content">
+              <h3>คลังยาเวชภัณฑ์</h3>
+              <p>ระบบบริหารจัดการคลังยาและเวชภัณฑ์สำหรับหน่วยงานสุขภาพ</p>
+            </div>
+          </article>
+
+          <article class="session-card reveal tilt-card">
+            <div class="session-img-wrapper">
+              <img src="https://scitech.rmutsv.ac.th/nscic2024/assets/session/04.jpg" alt="Track 04: ระบบจัดการครุภัณฑ์"
+                loading="lazy" />
+              <div class="track-tag">Track 04</div>
+            </div>
+            <div class="session-content">
+              <h3>บริหารครุภัณฑ์</h3>
+              <p>ระบบจัดการครุภัณฑ์โรงเรียนเพื่อการติดตามและยืมคืนอย่างเป็นระบบ</p>
+            </div>
+          </article>
+
+          <article class="session-card reveal tilt-card">
+            <div class="session-img-wrapper">
+              <img src="https://scitech.rmutsv.ac.th/nscic2024/assets/session/05.jpg" alt="Track 05: เว็บแอพจัดการการลา"
+                loading="lazy" />
+              <div class="track-tag">Track 05</div>
+            </div>
+            <div class="session-content">
+              <h3>เรื่องที่ 5</h3>
+              <p>เว็บแอพพลิเคชั่นบริหารจัดการการลาโรงเรียนบ้านหน้าเขาวัด</p>
+            </div>
+          </article>
+
+          <article class="session-card reveal tilt-card">
+            <div class="session-img-wrapper">
+              <img src="https://scitech.rmutsv.ac.th/nscic2024/assets/session/01.jpg"
+                alt="Track 06: เกมดิจิทัลพลเมืองดิจิทัล" loading="lazy" />
+              <div class="track-tag">Track 06</div>
+            </div>
+            <div class="session-content">
+              <h3>เรื่องที่ 6</h3>
+              <p>พัฒนาเกมดิจิทัลเพื่อส่งเสริมทักษะพลเมืองดิจิทัล</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+          <img src="logo.png" alt="ITD 2026 Logo"
+            style="width: 32px; height: 32px; object-fit: contain; border-radius: 6px;" />
+          <span class="brand-text">ITD 2026</span>
+        </div>
+        <p>สัมนาด้านวิทยาศาสตร์และเทคโนโลยี</p>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ITD. Science and Technology Faculty. All Rights Reserved.</p>
+        <div class="credits">สาขาวิชาเทคโนโลยีสารสนเทศและนวัตกรรมดิจิทัล มรภ.นครศรีธรรมราช</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts-shared.js"></script>
+</body>
+
+</html>

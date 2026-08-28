@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ลงทะเบียน | ITD 2026 สาขาวิชาเทคโนโลยีสารสนเทศและนวัตกรรมดิจิทัล มรภ.นครศรีธรรมราช</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="shortcut icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <meta name="description"
+    content="ลงทะเบียนเข้าร่วมการสัมนาทางด้านเทคโนโลยีสารสนเทศ ครั้งที่ 2 ประจำปี 2569 มหาวิทยาลัยราชภัฏนครศรีธรรมราช" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Kanit:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles-shared.css" />
+</head>
+
+<body>
+  <canvas id="trailCanvas"></canvas>
+  <div class="board-grid"></div>
+  <div class="probe" id="probe"></div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgress"></div>
+
+  <!-- Header Navigation -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-logo">
+          <img src="logo.png" alt="ITD 2026 Logo" onerror="this.parentElement.textContent='IT'" />
+        </span>
+        <span class="brand-text">การสัมนาทางด้านเทคโนโลยีสารสนเทศ</span>
+      </a>
+
+      <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="mainNav">
+        <a href="index.html#about">เกี่ยวกับ</a>
+        <a href="index.html#schedule">กำหนดการ</a>
+        <a href="sections.html">หัวข้อนำเสนอผลงาน</a>
+        <a href="download.html">ดาวน์โหลด</a>
+        <a href="contact.html">ติดต่อเรา</a>
+        <a class="nav-cta active" href="register.html">
+          <span class="status-dot active"></span> ลงทะเบียนเข้าร่วม
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Register Section -->
+    <section id="register" class="section register-section">
+      <div class="container">
+        <div class="section-header center reveal">
+          <span class="section-tag">Registration Form</span>
+          <h2>ลงทะเบียนเข้าร่วมการสัมนา</h2>
+          <p>กรุณากรอกข้อมูลส่วนตัวเพื่อลงทะเบียน ระบบจะทำการบันทึกข้อมูลไปยัง Google Sheets โดยอัตโนมัติ</p>
+        </div>
+
+        <div class="form-wrapper reveal">
+          <div class="submission-card">
+            <div class="submission-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 19l7-7 3 3-7 7-3-3zM8 14l2 2M5 17l5-5M10 4l4 4m-2-2L7 10"></path>
+              </svg>
+            </div>
+            <div>
+              <h3>ช่องทางส่งผลงานวิจัย</h3>
+              <p>หากต้องการส่งบทความวิจัยเข้าร่วมการสัมนา
+                สามารถกรอกข้อมูลลงทะเบียนเพื่อแจ้งให้ทีมงานทราบ</p>
+              <div class="submission-actions">
+                <a class="button primary" href="#register">ลงทะเบียนและส่งข้อมูล</a>
+              </div>
+            </div>
+          </div>
+
+          <form id="regForm" class="reg-form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="fullname">ชื่อ-นามสกุล <span class="required">*</span></label>
+                <input type="text" id="fullname" name="fullname" required placeholder="เช่น นายสมชาย ดีใจ" />
+              </div>
+              <div class="form-group">
+                <label for="email">อีเมล <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="เช่น somchay@example.com" />
+              </div>
+              <div class="form-group">
+                <label for="phone">เบอร์โทรศัพท์ <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" required placeholder="เช่น 0812345678" />
+              </div>
+              <div class="form-group">
+                <label for="affiliation">สถาบัน / หน่วยงาน <span class="required">*</span></label>
+                <input type="text" id="affiliation" name="affiliation" required
+                  placeholder="เช่น มหาวิทยาลัยราชภัฏนครศรีธรรมราช" />
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <label>ประเภทการลงทะเบียน <span class="required">*</span></label>
+              <div class="type-selectors">
+                <label class="type-option">
+                  <input type="radio" name="type" value="Attendee" checked onclick="togglePresenterFields(false)" />
+                  <span class="type-card">
+                    <span class="radio-dot"></span>
+                    <span class="type-label">ผู้เข้าร่วมงานทั่วไป (Attendee)</span>
+                  </span>
+                </label>
+                <label class="type-option">
+                  <input type="radio" name="type" value="Presenter" onclick="togglePresenterFields(true)" />
+                  <span class="type-card">
+                    <span class="radio-dot"></span>
+                    <span class="type-label">ผู้นำเสนอผลงาน (Presenter)</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div id="presenterFields" class="presenter-fields-wrapper hidden">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="track">สาขาวิชา <span class="required">*</span></label>
+                  <select id="track" name="track">
+                    <option value="">-- กรุณาเลือกสาขาวิชา --</option>
+                    <option value="เทคโนโลยีสารสนเทศ">เทคโนโลยีสารสนเทศ</option>
+                    <option value="เทคโนโลยีสารสนเทศและนวัตกรรมดิจิทัล">เทคโนโลยีสารสนเทศและนวัตกรรมดิจิทัล</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="paperTitle">ชื่อบทความวิจัย (ภาษาไทย หรือ ภาษาอังกฤษ) <span
+                      class="required">*</span></label>
+                  <input type="text" id="paperTitle" name="paperTitle"
+                    placeholder="เช่น การพัฒนาระบบบริหารจัดการข้อมูล..." />
+                </div>
+              </div>
+            </div>
+
+            <div id="pdfUploadSection" class="presenter-fields-wrapper hidden">
+              <div class="form-group full-width">
+                <label for="pdfFile">แนบไฟล์บทความวิจัย (PDF / Word) <span class="required">*</span></label>
+                <div class="file-upload-zone" id="fileDropZone">
+                  <input type="file" id="pdfFile" name="pdfFile" accept=".pdf,.doc,.docx" class="file-input-hidden"
+                    multiple />
+                  <div class="file-upload-content" id="fileUploadContent">
+                    <div class="file-upload-icon">
+                      <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
+                        </path>
+                      </svg>
+                    </div>
+                    <p class="file-upload-text">ลากไฟล์มาวางที่นี่ หรือ <span class="file-browse-btn">เลือกไฟล์</span>
+                    </p>
+                    <p class="file-upload-hint">รองรับไฟล์ PDF, Word (.doc, .docx) ขนาดไม่เกิน 10 MB ต่อไฟล์
+                      (เลือกได้หลายไฟล์)</p>
+                  </div>
+                  <div class="file-items-list hidden" id="fileItemsList"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" id="submitBtn" class="button primary submit-btn magnetic">
+                <span>ส่งข้อมูลลงทะเบียน</span>
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
+                  class="btn-arrow">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+                <div class="spinner hidden" id="submitSpinner"></div>
+              </button>
+            </div>
+          </form>
+
+          <div id="successState" class="success-state hidden">
+            <div class="success-icon-wrapper">
+              <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <h2>ลงทะเบียนสำเร็จ!</h2>
+            <p>ข้อมูลการลงทะเบียนของคุณได้รับการบันทึกลงใน Google Sheet เรียบร้อยแล้ว</p>
+            <button onclick="resetFormState()" class="button outline">ลงทะเบียนเพิ่ม</button>
+          </div>
+
+          <div id="errorState" class="error-state hidden">
+            <div class="error-icon-wrapper">
+              <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </div>
+            <h2>เกิดข้อผิดพลาด!</h2>
+            <p id="errorMessage">ไม่สามารถส่งข้อมูลได้ กรุณาตรวจสอบการตั้งค่า Apps Script หรือการเชื่อมต่ออินเทอร์เน็ต
+            </p>
+            <button onclick="showFormAgain()" class="button outline">ลองอีกครั้ง</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+          <img src="logo.png" alt="ITD 2026 Logo"
+            style="width: 32px; height: 32px; object-fit: contain; border-radius: 6px;" />
+          <span class="brand-text">ITD 2026</span>
+        </div>
+        <p>สัมนาด้านวิทยาศาสตร์และเทคโนโลยี</p>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ITD. Science and Technology Faculty. All Rights Reserved.</p>
+        <div class="credits">สาขาวิชาเทคโนโลยีสารสนเทศและนวัตกรรมดิจิทัล มรภ.นครศรีธรรมราช</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts-shared.js"></script>
+  <script>
+    // ---------------- Presenter Fields Toggle ----------------
+    function togglePresenterFields(show) {
+      const presenterFields = document.getElementById('presenterFields');
+      const pdfUploadSection = document.getElementById('pdfUploadSection');
+      const trackInput = document.getElementById('track');
+      const paperTitleInput = document.getElementById('paperTitle');
+      const pdfFileInput = document.getElementById('pdfFile');
+      if (show) {
+        presenterFields.classList.remove('hidden');
+        pdfUploadSection.classList.remove('hidden');
+        trackInput.setAttribute('required', 'required');
+        paperTitleInput.setAttribute('required', 'required');
+      } else {
+        presenterFields.classList.add('hidden');
+        pdfUploadSection.classList.add('hidden');
+        trackInput.removeAttribute('required');
+        paperTitleInput.removeAttribute('required');
+        trackInput.value = '';
+        paperTitleInput.value = '';
+        pdfFileInput.value = '';
+        if (typeof removeAllFiles === 'function') removeAllFiles();
+      }
+    }
+
+    // ---------------- File Upload Handling (Multiple Files) ----------------
+    const fileDropZone = document.getElementById('fileDropZone');
+    const pdfFileInput = document.getElementById('pdfFile');
+    const fileUploadContent = document.getElementById('fileUploadContent');
+    const fileItemsList = document.getElementById('fileItemsList');
+    let selectedFiles = [];
+
+    fileDropZone.addEventListener('click', (e) => {
+      if (e.target.closest('.file-remove-btn')) return;
+      pdfFileInput.click();
+    });
+
+    pdfFileInput.addEventListener('change', () => {
+      if (pdfFileInput.files.length > 0) {
+        handleFiles(Array.from(pdfFileInput.files));
+      }
+    });
+
+    fileDropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      fileDropZone.classList.add('drag-over');
+    });
+    fileDropZone.addEventListener('dragleave', () => {
+      fileDropZone.classList.remove('drag-over');
+    });
+    fileDropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      fileDropZone.classList.remove('drag-over');
+      if (e.dataTransfer.files.length > 0) {
+        handleFiles(Array.from(e.dataTransfer.files));
+      }
+    });
+
+    function handleFiles(files) {
+      const invalidType = [];
+      const tooLarge = [];
+      const validFiles = [];
+
+      const allowedTypes = [
+        'application/pdf',
+        'application/msword',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      ];
+      files.forEach(file => {
+        if (!allowedTypes.includes(file.type)) {
+          invalidType.push(file.name);
+        } else if (file.size > 10 * 1024 * 1024) {
+          tooLarge.push(file.name);
+        } else if (!selectedFiles.some(sf => sf.name === file.name && sf.size === file.size)) {
+          validFiles.push(file);
+        }
+      });
+
+      if (invalidType.length > 0) {
+        alert('ไฟล์ต่อไปนี้ไม่ใช่ PDF หรือ Word จึงไม่ถูกเพิ่ม:\n' + invalidType.join('\n'));
+      }
+      if (tooLarge.length > 0) {
+        alert('ไฟล์ต่อไปนี้มีขนาดเกิน 10 MB:\n' + tooLarge.join('\n'));
+      }
+
+      validFiles.forEach(file => {
+        const entry = {
+          name: file.name,
+          size: file.size,
+          base64: null
+        };
+        selectedFiles.push(entry);
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          entry.base64 = e.target.result.split(',')[1];
+        };
+        reader.readAsDataURL(file);
+      });
+
+      pdfFileInput.value = '';
+      renderFileList();
+    }
+
+    function removeFileAt(index) {
+      selectedFiles.splice(index, 1);
+      renderFileList();
+    }
+
+    function renderFileList() {
+      if (selectedFiles.length === 0) {
+        fileUploadContent.classList.remove('hidden');
+        fileItemsList.classList.add('hidden');
+        fileDropZone.classList.remove('has-file');
+        fileItemsList.innerHTML = '';
+        return;
+      }
+
+      fileUploadContent.classList.add('hidden');
+      fileItemsList.classList.remove('hidden');
+      fileDropZone.classList.add('has-file');
+
+      let html = `<div class="file-count-badge">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+        เลือกแล้ว ${selectedFiles.length} ไฟล์
+      </div>`;
+
+      selectedFiles.forEach((f, i) => {
+        const sizeMB = (f.size / (1024 * 1024)).toFixed(2);
+        html += `<div class="file-item">
+          <div class="file-info">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
+            <span>${f.name}</span>
+            <span class="file-size-label">${sizeMB} MB</span>
+          </div>
+          <button type="button" class="file-remove-btn" onclick="removeFileAt(${i})" aria-label="ลบไฟล์ ${f.name}">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>`;
+      });
+
+      html += `<p class="file-upload-hint" style="text-align:center; margin-top:8px; cursor:pointer;" onclick="document.getElementById('pdfFile').click()">
+        <span class="file-browse-btn">+ เพิ่มไฟล์อีก</span>
+      </p>`;
+
+      fileItemsList.innerHTML = html;
+    }
+
+    function removeAllFiles() {
+      selectedFiles = [];
+      pdfFileInput.value = '';
+      renderFileList();
+    }
+
+    // ---------------- Google Apps Script submission ----------------
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzuxYA-TWwFDa1dpT8p8JykGZx9Tnb7bnjjULRxzygwTVGlXyYcph8B7EoatIdC9PFr/exec';
+    const regForm = document.getElementById('regForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitSpinner = document.getElementById('submitSpinner');
+    const successState = document.getElementById('successState');
+    const errorState = document.getElementById('errorState');
+    const errorMessage = document.getElementById('errorMessage');
+
+    regForm.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const isPresenter = regForm.querySelector('input[name="type"]:checked')?.value === 'Presenter';
+      if (isPresenter && selectedFiles.length === 0) {
+        alert('กรุณาแนบไฟล์บทความวิจัย (PDF) อย่างน้อย 1 ไฟล์');
+        return;
+      }
+      if (isPresenter && selectedFiles.some(f => f.base64 === null)) {
+        alert('กรุณารอสักครู่ ไฟล์บางรายการยังอ่านไม่เสร็จ');
+        return;
+      }
+
+      submitBtn.setAttribute('disabled', 'disabled');
+      submitSpinner.classList.remove('hidden');
+      submitBtn.querySelector('.btn-arrow').classList.add('hidden');
+      submitBtn.querySelector('span').textContent = 'กำลังส่งข้อมูล...';
+
+      if (scriptURL.includes('PLACEHOLDER_URL_REPLACE_ME')) {
+        setTimeout(() => {
+          showError('กรุณาตั้งค่า Google Apps Script Web App URL ในส่วนท้ายของไฟล์ index.html ก่อนเปิดใช้งานระบบส่งข้อมูลครับ');
+        }, 800);
+        return;
+      }
+
+      const payload = {
+        fullname: regForm.fullname.value,
+        email: regForm.email.value,
+        phone: regForm.phone.value,
+        affiliation: regForm.affiliation.value,
+        type: regForm.querySelector('input[name="type"]:checked')?.value || 'Attendee',
+        track: regForm.track.value,
+        paperTitle: regForm.paperTitle.value,
+        pdfBase64: selectedFiles.map(f => f.base64 || ''),
+        pdfFileName: selectedFiles.map(f => f.name || '')
+      };
+
+      fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+      })
+        .then(() => showSuccess())
+        .catch(error => {
+          console.error('Error!', error.message);
+          showError(error.message);
+        });
+    });
+
+    function showSuccess() {
+      regForm.classList.add('hidden');
+      successState.classList.remove('hidden');
+      resetSpinner();
+    }
+    function showError(msg) {
+      regForm.classList.add('hidden');
+      errorState.classList.remove('hidden');
+      errorMessage.textContent = msg || 'ไม่สามารถบันทึกข้อมูลได้ กรุณาลองใหม่อีกครั้ง หรือตรวจสอบสิทธิ์ของ Apps Script';
+      resetSpinner();
+    }
+    function resetSpinner() {
+      submitBtn.removeAttribute('disabled');
+      submitSpinner.classList.add('hidden');
+      submitBtn.querySelector('.btn-arrow').classList.remove('hidden');
+      submitBtn.querySelector('span').textContent = 'ส่งข้อมูลลงทะเบียน';
+    }
+    function resetFormState() {
+      regForm.reset();
+      togglePresenterFields(false);
+      removeAllFiles();
+      successState.classList.add('hidden');
+      regForm.classList.remove('hidden');
+    }
+    function showFormAgain() {
+      errorState.classList.add('hidden');
+      regForm.classList.remove('hidden');
+    }
+  </script>
+</body>
+
+</html>

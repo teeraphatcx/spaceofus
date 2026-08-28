@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ติดต่อเรา | ITD 2026 สาขาวิชาเทคโนโลยีสารสนเทศและนวัตกรรมดิจิทัล มรภ.นครศรีธรรมราช</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="shortcut icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <meta name="description"
+    content="ติดต่อสอบถามข้อมูลเพิ่มเติม การสัมนาทางด้านเทคโนโลยีสารสนเทศ ครั้งที่ 2 ประจำปี 2569 มหาวิทยาลัยราชภัฏนครศรีธรรมราช" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Kanit:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles-shared.css" />
+</head>
+
+<body>
+  <canvas id="trailCanvas"></canvas>
+  <div class="board-grid"></div>
+  <div class="probe" id="probe"></div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgress"></div>
+
+  <!-- Header Navigation -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-logo">
+          <img src="logo.png" alt="ITD 2026 Logo" onerror="this.parentElement.textContent='IT'" />
+        </span>
+        <span class="brand-text">การสัมนาทางด้านเทคโนโลยีสารสนเทศ</span>
+      </a>
+
+      <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="mainNav">
+        <a href="index.html#about">เกี่ยวกับ</a>
+        <a href="index.html#schedule">กำหนดการ</a>
+        <a href="sections.html">หัวข้อนำเสนอผลงาน</a>
+        <a href="download.html">ดาวน์โหลด</a>
+        <a href="contact.html" class="active">ติดต่อเรา</a>
+        <a class="nav-cta" href="register.html">
+          <span class="status-dot active"></span> ลงทะเบียนเข้าร่วม
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Get in touch</span>
+          <h2>ติดต่อสอบถามข้อมูลเพิ่มเติม</h2>
+        </div>
+
+        <div class="grid-3 contact-grid">
+          <article class="contact-card reveal">
+            <div class="contact-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <h3>ที่อยู่สถานที่จัดงาน</h3>
+            <p>คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏนครศรีธรรมราช</p>
+          </article>
+
+          <article class="contact-card reveal">
+            <div class="contact-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                </path>
+              </svg>
+            </div>
+            <h3>โทรศัพท์และโทรสาร</h3>
+            <p>ติดต่อสอบถามการนำเสนอและประสานงาน:</p>
+            <p class="phone-link"><strong>Tel:</strong> <a href="tel:0967728107">09 6772 8107</a></p>
+            <p class="phone-link"><strong>Tel:</strong> <a href="tel:0826506361">08 2650 6361</a></p>
+            <p class="sub-detail"><strong>Fax:</strong> 0 7577 3338</p>
+          </article>
+
+          <article class="contact-card reveal">
+            <div class="contact-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+                </path>
+              </svg>
+            </div>
+            <h3>ช่องทางออนไลน์</h3>
+            <p>ติดตามข่าวประชาสัมพันธ์และประกาศต่าง ๆ ได้ที่:</p>
+            <div class="online-links">
+              <a href="https://web.facebook.com/ITNSTRU" target="_blank" rel="noreferrer" class="social-btn">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+                  </path>
+                </svg>
+                ITNSTRU
+              </a>
+              <a href="https://web.facebook.com/ITNSTRU" target="_blank" rel="noreferrer" class="social-btn facebook">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z">
+                  </path>
+                </svg>
+                ITDNSTRU
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+          <img src="logo.png" alt="ITD 2026 Logo"
+            style="width: 32px; height: 32px; object-fit: contain; border-radius: 6px;" />
+          <span class="brand-text">ITD 2026</span>
+        </div>
+        <p>สัมนาด้านวิทยาศาสตร์และเทคโนโลยี</p>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ITD. Science and Technology Faculty. All Rights Reserved.</p>
+        <div class="credits">สาขาวิชาเทคโนโลยีสารสนเทศและนวัตกรรมดิจิทัล มรภ.นครศรีธรรมราช</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts-shared.js"></script>
+</body>
+
+</html>
